@@ -1,0 +1,64 @@
+body{
+    background-image: linear-gradient(to left,  #EDE0DF 60%,#D0D0D2 30%);
+     font-family: 'Roboto', sans-serif;
+ }
+ .aelin-desc{
+     height: 100vh;
+     display: flex;
+     align-items: center;
+ }
+ .jumbotron{
+     width: 350px;
+     margin-left: 10rem;
+ }
+ .form-bg{
+    
+ }
+ .lebel{
+     font-size: 1rem;
+     font-weight: 400;
+     display: block;
+     margin-top: 1rem;
+     letter-spacing: 1px;
+     font-family:'Baloo Tamma 2', cursive;
+ }
+ .icon{
+     color: #BC2B44;
+     font-weight: 600;
+     
+ }
+ .input{
+     background: transparent;
+     margin-top: 10px;
+     border: 0px;
+     border: 2px solid #BC2B44;
+     color: rgba(255,255,255,0.5);
+     padding: 10px;
+     width: 350px;
+ }
+ .description{
+     margin-top: 30%;
+ }
+ .btn-danger{
+     background:  #BC2B44;
+     border-color: #BC2B44;
+ }
+ .btn-danger:hover{
+     background: transparent;
+     transition-delay: .3s;
+     border-color: #BC2B44;
+ }
+ a{
+     color: white;
+     text-decoration: underline;
+     margin-left: 0.3rem;
+ }
+ a:hover{
+     color: white;
+     text-decoration: underline;
+     margin-left: 0.3rem;
+ }
+ .form-check-input{
+     width: 0.7rem;
+     background:  #EDE0DF;
+ }
