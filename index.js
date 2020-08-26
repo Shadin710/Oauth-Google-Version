@@ -22,12 +22,8 @@ app.use(cors());
 
 //setting up the routes
 app.use('/',log);
-app.get('/register',(req,res)=>{
-    res.render('register');
-})
-app.get('/forget',(req,res)=>{
-    res.render('forget')
-})
+app.use('/register',reg);
+app.use('/forget',forget);
 
 app.listen(port,()=>{
     console.log(`server is running in ${port}......`);
