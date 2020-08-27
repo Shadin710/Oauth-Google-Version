@@ -1,5 +1,6 @@
-const router = require('express').Router();
 const express = require('express');
+const router = require('express').Router();
+
 const path = require('path');
 const bodyParser =  require('body-parser');
 const bcrypt = require('bcryptjs');
@@ -21,4 +22,5 @@ router.get('/logout',(req,res)=>{
 router.get('/google',(req,res)=>{
     res.send('google+ login');
 });
-module.exports = router; 
+
+module.exports = router;

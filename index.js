@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 const log = require('./routes/login');
 const reg = require('./routes/register');
-const forget = require('./routes/forget');
+//const forget = require('./routes/forget');
 const morgan = require('morgan');
 const cors = require('cors');
 
@@ -23,7 +23,7 @@ app.use(cors());
 //setting up the routes
 app.use('/',log);
 app.use('/register',reg);
-app.use('/forget',forget);
+//app.use('/forget',forget);
 
 app.listen(port,()=>{
     console.log(`server is running in ${port}......`);
