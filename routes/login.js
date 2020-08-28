@@ -6,7 +6,7 @@ const bodyParser =  require('body-parser');
 const bcrypt = require('bcryptjs');
 const {check, validationResult}  =require('express-validator');
 const { resolveMx } = require('dns');
-
+const passport = require('passport');
 
 router.use(express.static(path.join(__dirname,'./../views')));
 router.use(bodyParser.json());
@@ -19,8 +19,11 @@ router.get('/',(req,res)=>{
 router.get('/logout',(req,res)=>{
     res.send("logged out");
 });
-router.get('/google',(req,res)=>{
-    res.send('google+ login');
-});
+router.get('/google',passport.authenticate('google',{
+    scope:['profile']
+}));
+router.get('/google/redirect',passport.authenticate('google'),(req,res)=>{
+    res.send("you fired a callbackURL");
+}); 
 
-module.exports = router;
+module.exports = router; 
