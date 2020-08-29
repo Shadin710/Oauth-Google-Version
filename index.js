@@ -12,25 +12,32 @@ const passportSetup = require('./config/passport-setup');
 const port = process.env.PORT||3000;
 const mongoose = require('mongoose');
 const database = require('./database');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const keys = require('./config/key');
+const profileRoute = require('./routes/profile');
 
-//const keys = require('./config/key');
 app.use(express.static(path.join(__dirname,'views')));
 // setting up the view engine
 app.set('view engine','ejs');
 app.set ('views','./views');
-
 app.use(morgan('dev'));
 app.use(cors());
 
-//database connection code
-// mongoose.connect(keys.mongoDB.dbURI,()=>{
-//     console.log('database connected');
-// })
+app.use(cookieSession({
+    maxAge:24*60*60*1000,
+    keys: [keys.session.cookieKey]
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 //setting up the routes 
 app.use('/auth',log);
 app.use('/register',reg);
 //app.use('/forget',forget);
+app.use('/profile',profileRoute);
 
 app.listen(port,()=>{
     console.log(`server is running in ${port}......`);

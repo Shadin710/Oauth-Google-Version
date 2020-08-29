@@ -23,7 +23,7 @@ router.get('/google',passport.authenticate('google',{
     scope:['profile']
 }));
 router.get('/google/redirect',passport.authenticate('google'),(req,res)=>{
-    res.send("you fired a callbackURL");
+    res.redirect('/profile/');
 }); 
 
 module.exports = router; 
