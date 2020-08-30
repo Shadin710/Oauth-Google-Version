@@ -21,9 +21,13 @@ router.use(bodyParser.urlencoded({extended: true}));
 router.get('/',(req,res)=>{
     res.render('login');
 });
-router.post('/',passport.authenticate('local',{failureRedirect:'/auth/'}),(req,res)=>{
-    res.send('you are logged in');
-});
+router.post('/', (req, res, next) => {
+    passport.authenticate('local', {
+      successRedirect: '/dashboard',
+      failureRedirect: '/auth/',
+      failureFlash: true
+    })(req, res, next);
+  });
 router.get('/logout',(req,res)=>{
     req.logout();
     res.redirect('/auth/');

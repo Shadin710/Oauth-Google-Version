@@ -1,51 +1,40 @@
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20');
-const keys = require('./key');
-const User = require('./../models/user-models');
-const LocalStrategy = require('passport-local');
-const bcrypt = require('bcryptjs')
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
 
+// Load User model
+const User = require('../models/user-models');
 
-// function initialize(passport,getUserByEmail) {
-//     const authenticateUser = async(email, password, done) => {
-//         const user = getUserByEmail(email);
-//         if (user == null) {
-//             return done(null, false, { message: 'no user with that email' })
-//         }
-//         try {
-//             if (await bcrypt.compare(password, user.password)) {
-//                 return done(null, user);
-//             }
-//             else {
-//                 return done(null, false, { message: 'password incorrect' })
-//             }
-//         } catch (e) {
-//             return done(e);
-//         }
-//     }
-//     passport.use(new LocalStrategy({ usernameField: 'email' }, authenticateUser))
-//     passport.serializeUser((user,done)=>{ })
-//     passport.deserializeUser((id,done)=>{ })
-// }
-// function initialize(){
-// passport.use(new LocalStrategy(
-//      function(email, password, done) {
-//       User.findOne({ email:email }, function (err, user) {
-//         if (err) { return done(err); }
-//         if (!user) { return done(null, false); }
-//         if (! ( bcrypt.compareSync(pass, user.password))) { return done(null, false); }
-//         return done(null, user);
-//       });
-//     }
-//   ));
-//   passport.serializeUser((user, done) => {
-//     done(null, user.id);
-// });
+module.exports = function(passport) {
+  passport.use(
+    new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+      // Match user
+      User.findOne({
+        email: email
+      }).then(user => {
+        if (!user) {
+          return done(null, false, { message: 'That email is not registered' });
+        }
 
-// passport.deserializeUser((id, done) => {
-//     User.findById(id).then((user) => {
-//         done(null, user)
-//     })
-// })
-// }
-//module.exports = initialize;
+        // Match password
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+          if (err) throw err;
+          if (isMatch) {
+            return done(null, user);
+          } else {
+            return done(null, false, { message: 'Password incorrect' });
+          }
+        });
+      });
+    })
+  );
+
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
+};
