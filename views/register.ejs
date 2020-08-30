@@ -34,16 +34,18 @@
                 <div class="description">
             <h4>Register</h4>
             <h6 style="text-decoration: underline;">Creat your Account</h6><br>
-            <span class="lebel"><i class="fas fa-user-alt icon"></i> &nbsp;Name :</span>
-            <input type="text" class="input"><br>
-            <span class="lebel"><i class="fas fa-envelope-open icon"></i> &nbsp;Email :</span>
-            <input type="text" class="input"><br>
-            <span class="lebel"><i class="fas fa-lock icon"></i> &nbsp;Password :</span>
-            <input type="text" class="input"><br>
-            <span class="lebel"><i class="fas fa-lock icon"></i> &nbsp;Confirm Password :</span>
-            <input type="text" class="input"><br><br>
-            <input type="submit" class="btn btn-danger" value="Log-In" style="margin-bottom: 6px;"><br>
-            <p class="text-design text-center" style="margin-top: 5px;">Already have an account?<a class="text-muted" href="index.html">Log In</a></p>
+            <form action="/register/" method="POST">
+              <span class="lebel"><i class="fas fa-user-alt icon"></i> &nbsp;Name :</span>
+              <input type="text" class="input" name="name"><br>
+              <span class="lebel"><i class="fas fa-envelope-open icon"></i> &nbsp;Email :</span>
+              <input type="text" class="input" name="email"><br>
+              <span class="lebel"><i class="fas fa-lock icon"></i> &nbsp;Password :</span>
+              <input type="password" class="input" name="pass"><br>
+              <span class="lebel"><i class="fas fa-lock icon"></i> &nbsp;Confirm Password :</span>
+              <input type="password" class="input" name="pass2"><br><br>
+              <input type="submit" class="btn btn-danger" value="Log-In" style="margin-bottom: 6px;"><br>
+            </form>
+            <p class="text-design text-center" style="margin-top: 5px;">Already have an account?<a class="text-muted" href="/auth/">Log In</a></p>
          </div>
             </div>
         </div>

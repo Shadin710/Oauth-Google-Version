@@ -33,14 +33,17 @@
             <div class="col-md-5 form-bg">
                 <div class="description">
             <h4>Log In</h4>
-            <h6 style="text-decoration: underline;">Please Log-in to continue</h6><br>
-            <span class="lebel"><i class="fas fa-envelope-open icon"></i> &nbsp;Email :</span>
-            <input type="text" class="input" ><br>
-            <span class="lebel"><i class="fas fa-lock icon"></i> &nbsp;Password :</span>
-            <input type="text" class="input"><br><a href="forgetPass.html" class="text-muted"style="text-decoration: none;font-size: 12px;">Forgot password?</a><br><br>
-            <input type="submit" class="btn btn-danger" value="Log-In" style="margin-bottom: 6px;"><br>
-            <input class="form-check-input" style="margin-left: 5px;margin-top: 7px;" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" style="font-size: 12px;margin-left: 22px;" for="defaultCheck1">Keep me logged in</label><br>
+                <h6 style="text-decoration: underline;">Please Log-in to continue</h6><br>
+                <form action="/auth/" method="POST">
+                <span class="lebel"><i class="fas fa-envelope-open icon"></i> &nbsp;Email :</span>
+                <input type="text" class="input" name="email"><br>
+                <span class="lebel"><i class="fas fa-lock icon"></i> &nbsp;Password :</span>
+                <input type="password" class="input" name="password"><br>
+                <a href="forgetPass.html" class="text-muted"style="text-decoration: none;font-size: 12px;">Forgot password?</a><br><br>
+                <input type="submit" class="btn btn-danger" value="Log-In" style="margin-bottom: 6px;"><br>
+                <input class="form-check-input" style="margin-left: 5px;margin-top: 7px;" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" style="font-size: 12px;margin-left: 22px;" for="defaultCheck1">Keep me logged in</label><br>
+            </form>
             <p class="text-design text-center" style="margin-top: 5px;">Don't have an account?<a class="text-muted" href="/register/">Register</a></p>
          </div>
             </div>

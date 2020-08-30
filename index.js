@@ -16,6 +16,8 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/key');
 const profileRoute = require('./routes/profile');
+const { initialize } = require('passport');
+const User = require('./models/user-models');
 
 app.use(express.static(path.join(__dirname,'views')));
 // setting up the view engine
@@ -24,11 +26,12 @@ app.set ('views','./views');
 app.use(morgan('dev'));
 app.use(cors());
 
+
+
 app.use(cookieSession({
     maxAge:24*60*60*1000,
     keys: [keys.session.cookieKey]
 }));
-
 app.use(passport.initialize());
 app.use(passport.session());
 
