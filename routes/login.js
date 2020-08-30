@@ -17,7 +17,8 @@ router.get('/',(req,res)=>{
     res.render('login');
 });
 router.get('/logout',(req,res)=>{
-    res.send("logged out");
+    req.logout();
+    res.redirect('/auth/');
 });
 router.get('/google',passport.authenticate('google',{
     scope:['profile']
