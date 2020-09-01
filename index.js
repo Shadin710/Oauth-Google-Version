@@ -21,7 +21,6 @@ const User = require('./models/user-models');
 const session = require('express-session');
 const key = require('./config/key');
 const flash = require('connect-flash');
-
 app.use(express.static(path.join(__dirname,'views')));
 app.use(express.urlencoded({ extended: true }));
 // setting up the view engine
