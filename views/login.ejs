@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@600&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
     <!--font Awesome-->
     <script src="https://kit.fontawesome.com/984b75d004.js" crossorigin="anonymous"></script>
-    <script src="js.js"></script>
+    <script src="js/js.js"></script>
 </head>
 <body>
     <section>
@@ -23,8 +23,8 @@
                 <div class="main-sec">
                       <div class="description">
           <span class="color top" style="font-size:1.4rem; font-weight:500;">Log In </span>  
-                          
-         <form action="/auth/" id="form" method="POST" onsubmit=" return validate() ">
+          <%- include ("./partials/messages") %>            
+          <form action="/auth/" id="form" method="POST" onsubmit=" return validate() ">
              
             <span class="lebel"><i class="fas fa-envelope-open icon"></i> &nbsp;Email:</span><br>
                 <input type="email" class="input" id="email" style="display: block;" name="email">

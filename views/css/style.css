@@ -1,3 +1,8 @@
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+}
 body{
     background: url('../Assets/pexels-lumn-167699.jpg');
     background-size: cover;
@@ -110,7 +115,7 @@ a{
 
 @media screen and (max-width: 767px){
     .main-sec{
-    background:rgba(255, 255, 255, 0.79);
+    background:rgba(0, 0, 0, 0.79);
     width: 100%;
     padding: 2rem;
     height: auto;
